@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+    <div class="my-3">
+        <h3 class="font-monospace text-center">This is Home Page</h3>
+        <div class="text-center">
+            {% for m in messages %}
+            <p>{{ m }}</p>
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <p>Welcome <span class="text-warning f-bold">{{user.first_name}} {{user.last_name}}</span></p>
+        </div>
+    </div>
+    <div class="container p-3">
+        <table class="table">
+            <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">Albums</th>
+                  <th scope="col">Instrument</th>
+                </tr>
+            </thead>
+            {% for artist in artists %}
+            <tbody>
+                <tr>
+                  <td>{{artist.first_name}}</td>
+                  <td>{{artist.email}}</td>
+                  <td>{{artist.phone_number}}</td>
+                  <td>
+                    {% for album in artist.albums.all %}
+                    {{album.album_name }}
+                    {% endfor %}
+                  </td>
+                  <td>{{artist.instrument_type}}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

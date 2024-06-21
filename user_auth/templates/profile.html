@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Profile {% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="text-center container">
+        {% for m in messages %}
+        <p>{{ m }}</p>
+        {% endfor %}
+    </div>
+    <form style="background-color: rgb(254, 255, 254);" novalidate method="post" class="my-4 w-75 container p-5 border shadow-lg">
+        {% csrf_token %}
+        <h3 class="text-center font-monospace mb-3">Profile Form</h3>
+        {{form | crispy}}
+        <button class="btn btn-primary">UPDATE PROFILE</button>
+    </form>
+{% endblock %}
